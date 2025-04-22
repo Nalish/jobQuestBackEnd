@@ -3,7 +3,7 @@ setupAliases()
 import express,{Request,Response} from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import authRoutes from "./routes/authRoutes"
+
 import userRoutes from "@app/routes/userRoutes"
 import jobseekerRoutes from "@app/routes/jobseekerRoutes"
 import cvsRoutes from "@app/routes/cvsRoutes"
@@ -29,7 +29,7 @@ app.use(cors({
     credentials: true //allows cookies and auth headers
 }))
 //Create the routes
-app.use("/api/auth",authRoutes)
+
 app.use("/api/users",userRoutes)
 app.use("/api/jobseeker",jobseekerRoutes)
 // app.use("/api/cvs",cvsRoutes)
