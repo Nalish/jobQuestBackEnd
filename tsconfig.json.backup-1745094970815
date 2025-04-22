@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                 // Target modern JavaScript
+    "module": "commonjs",            // Use CommonJS module system
+    "outDir": "./dist",              // Output compiled files to dist folder
+    "rootDir": "./src",              // Input files located in src folder
+    "strict": true,                  // Enable strict type-checking options
+    "esModuleInterop": true,         // Allows default import syntax
+    "skipLibCheck": true             // Skip type checking for declaration files
+  }
+}

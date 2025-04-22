@@ -1,0 +1,62 @@
+import express, {Request,Response,NextFunction}  from "express"
+import asyncHandler from "../middlewares/asyncHandler"
+import pool from "@app/db/db"
+import bcrypt from "bcrypt"
+
+
+//get Users
+export const getAllUsers= asyncHandler(async (req:Request,res:Response) =>{
+    try {
+        const result=await pool.query("SELECT * FROM users")
+        res.json(result.rows)
+    } catch (error) {
+        res.status(500).json({error:"Server Error"})
+        
+    }
+
+})
+//updating User Data
+export const updateUser = asyncHandler(async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { email, password, role_id } = req.body;
+  
+    // Check if user exists
+    const userResult = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ error: "User not found!" });
+    }
+  
+    // Keep existing values if new ones are not provided
+    const existingUser = userResult.rows[0];
+    const updatedEmail = email || existingUser.email;
+    const updatedRoleId = role_id || existingUser.role_id;
+  
+    let updatedPassword = existingUser.password;
+    if (password) {
+      const salt = await bcrypt.genSalt(10);
+      updatedPassword = await bcrypt.hash(password, salt);
+    }
+  
+    // Update user
+    await pool.query(
+      "UPDATE users SET email = $1, password = $2, role_id = $3 WHERE id = $4",
+      [updatedEmail, updatedPassword, updatedRoleId, id]
+    );
+  
+    res.json({ message: "User updated successfully!" });
+  });
+  export const deleteUser = asyncHandler(async (req: Request, res: Response) => {
+    const { id } = req.params;
+  
+    // Check if user exists
+    const userResult = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ message: 'User not found!' });
+    }
+  
+    // Delete the user
+    await pool.query('DELETE FROM users WHERE id = $1', [id]);
+  
+    res.json({ message: 'User deleted successfully!' });
+  });
+  
