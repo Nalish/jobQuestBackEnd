@@ -49,9 +49,9 @@ app.use("/api/jobSkills",jobSkillRoutes)
 app.use("/api/jobs",jobRoutes);
 
 // Start the server
-// app.listen(port,() => {
-//     console.log(`Server is running at:${port}`);
-// });
-app.listen(3000,()=>{
-   console.log("Server Listening");
-})
+app.listen(port,() => {
+    console.log(`Server is running at:${port}`);
+});
+// app.listen(3000,()=>{
+//    console.log("Server Listening");
+// })
