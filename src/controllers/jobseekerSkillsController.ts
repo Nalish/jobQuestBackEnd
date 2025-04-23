@@ -1,6 +1,6 @@
-import asyncHandler from "@app/middlewares/asyncHandler";
+import asyncHandler from "../middlewares/asyncHandler";
 import { Response, Request } from "express";
-import pool from "@app/db/db"
+import pool from "../db/db"
 
 
 export const getAllJobseekerSkills = asyncHandler(async (req: Request, res: Response) => {
@@ -29,17 +29,19 @@ export const getJobseekerSkillById = asyncHandler(async (req: Request, res: Resp
 })
 
 export const createjobseekerSkill = asyncHandler(async (req: Request, res: Response) => {
-    const { job_seeker_id, skill_id } = req.body
-    try {
-        const result = await pool.query('INSERT INTO job_seeker_skills(job_seeker_id,skill_id) RETURNING *',
-            [job_seeker_id, skill_id])
-        res.status(201).json(result.rows[0])
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "internal server error" });
-    }
-})
+    const { job_seeker_id, skill_id } = req.body;
 
+    try {
+        const result = await pool.query(
+            'INSERT INTO job_seeker_skills(job_seeker_id, skill_id) VALUES ($1, $2) RETURNING *',
+            [job_seeker_id, skill_id]
+        );
+        res.status(201).json(result.rows[0]);
+    } catch (error) {
+        console.error('Error inserting job seeker skill:', error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 export const updatejobseekerSkill = asyncHandler(async (req: Request, res: Response) => {
     const { id } = req.params;
     const { job_seeker_id, skill_id } = req.body

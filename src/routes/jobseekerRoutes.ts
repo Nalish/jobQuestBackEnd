@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {getAllJobSeekers,getJobSeekerById,createJobSeeker,updateJobSeeker,deleteJobSeeker} from '@app/controllers/jobseekerController';
+import {getAllJobSeekers,getJobSeekerById,createJobSeeker,updateJobSeeker,deleteJobSeeker} from '../controllers/jobseekerController';
 
 const router = Router();
 

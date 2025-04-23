@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import asyncHandler from '@app/middlewares/asyncHandler';
-import pool from '@app/db/db';
+import asyncHandler from '../middlewares/asyncHandler';
+import pool from '../db/db';
 
 // Get all employer profiles
 export const getAllEmployers = asyncHandler(async (req: Request, res: Response) => {

@@ -1,6 +1,6 @@
-import asyncHandler from "@app/middlewares/asyncHandler"
+import asyncHandler from "../middlewares/asyncHandler"
 import { Request, Response } from "express"
-import pool from "@app/db/db"
+import pool from "../db/db"
 
 //Get all skills
 export const getAllSkills = asyncHandler(async (req: Request, res: Response) => {

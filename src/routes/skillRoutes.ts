@@ -1,4 +1,4 @@
-import { createSkill, deleteSkill, getAllSkills, getAllSkillsById, updateSkill } from '@app/controllers/skillController';
+import { createSkill, deleteSkill, getAllSkills, getAllSkillsById, updateSkill } from '../controllers/skillController';
 import express from 'express'
 
 

@@ -1,4 +1,4 @@
-import { createCV, deleteCV, getAllCVs, getCVById } from '@app/controllers/cvsController';
+import { createCV, deleteCV, getAllCVs, getCVById } from '../controllers/cvsController';
 import express from 'express'
 
 const router=express.Router()

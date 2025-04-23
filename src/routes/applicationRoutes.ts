@@ -1,4 +1,4 @@
-import { createApplication, deleteApplication, getAllApplications, getApplicationsByUserId, updateApplicationStatus } from '@app/controllers/applicationController';
+import { createApplication, deleteApplication, getAllApplications, getApplicationsByUserId, updateApplicationStatus } from '../controllers/applicationController';
 import express from 'express'
 
 const router=express.Router();

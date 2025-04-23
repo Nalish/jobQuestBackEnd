@@ -1,4 +1,4 @@
-import { createEmployer, deleteEmployer, getAllEmployers, getEmployerById, updateEmployer } from '@app/controllers/employerController';
+import { createEmployer, deleteEmployer, getAllEmployers, getEmployerById, updateEmployer } from '../controllers/employerController';
 import express from 'express'
 
 

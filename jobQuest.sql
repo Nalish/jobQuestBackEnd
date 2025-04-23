@@ -76,4 +76,7 @@ CREATE TABLE job_skills (
   UNIQUE (job_id, skill_id)
 );
 
+INSERT INTO roles (name) VALUES ('Jobseeker');
+INSERT INTO roles (name) VALUES ('Employer');
+INSERT INTO roles (name) VALUES ('Admin');
 

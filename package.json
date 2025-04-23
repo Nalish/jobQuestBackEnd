@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.ts",
+    "start": "node dist/server.js",
     "start:dev": "nodemon src/server.ts",
     "build": "tsc"
   },
@@ -14,12 +14,13 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
-    "import-aliases": "^1.0.2",
     "jsonwebtoken": "^9.0.2",
-    "pg": "^8.13.3"
+    "pg": "^8.13.3",
+    "module-alias": "^2.2.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -34,4 +35,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
+
 }

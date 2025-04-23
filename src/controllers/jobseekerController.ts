@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import pool from '@app/db/db'
-import asyncHandler from '@app/middlewares/asyncHandler';
+import pool from '../db/db'
+import asyncHandler from '../middlewares/asyncHandler';
 // Get all job seeker profiles
 export const getAllJobSeekers = asyncHandler(async (req: Request, res: Response) => {
   try {
@@ -38,6 +38,7 @@ export const createJobSeeker =asyncHandler( async (req: Request, res: Response) 
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
+    console.error('Error creating job seeker profile:', error);
     res.status(500).json({ error: 'Failed to create job seeker profile' });
   }
 });
