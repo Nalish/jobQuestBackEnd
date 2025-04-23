@@ -6,13 +6,8 @@ services:
     container_name: backendskillmatch-backend
     ports:
       - "3000:3000"
-    environment:
-      - DB_URL=postgres://postgres:root@db:5432/SkillMatchAI
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
+    env_file:
+      - .env  # This line loads your .env file
     depends_on:
       - postgres
 
@@ -31,17 +26,3 @@ services:
 
 volumes:
   pgdata:
-
-# version: '3.8'
-
-# services:
-#   backend:
-#     build: .
-#     ports:
-#       - "3000:3000"
-#     volumes:
-#       - .:/app
-#       - /app/node_modules
-#     env_file:
-#       - .env
-#     command: npm run start
